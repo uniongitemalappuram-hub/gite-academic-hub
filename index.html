@@ -3,33 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f172a">
 <title>GITE Academic Hub | Zevora Union 2026–27</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
+:root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--amber:#f59e0b;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);line-height:1.5}
-.navbar{background:#0f172a;color:#fff;padding:.9rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center}
+.navbar{background:#0f172a;color:#fff;padding:.9rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
 .brand{display:flex;align-items:center;gap:10px}
 .brand-icon{background:linear-gradient(135deg,#0ea5e9,#10b981);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
 .brand h1{font-size:1.05rem;font-weight:800}
 .brand span{font-size:.68rem;color:#94a3b8;display:block;text-transform:uppercase}
-.nav-voice{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;text-decoration:none;padding:7px 14px;border-radius:50px;font-size:.75rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}
-.hero{background:radial-gradient(circle at top right,#1e293b,#0f172a);color:#fff;padding:2.4rem 5% 4rem;text-align:center}
-.hero-tag{display:inline-block;background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.3);color:#38bdf8;padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:700;margin-bottom:.7rem}
-.hero h2{font-size:1.65rem;font-weight:800;margin-bottom:.4rem}
-.hero p{color:#cbd5e1;font-size:.86rem;max-width:480px;margin:0 auto}
-.container{max-width:780px;margin:-2.2rem auto 3rem;padding:0 4%;position:relative;z-index:10}
-.control-box{background:#fff;border-radius:18px;padding:1.1rem;box-shadow:0 12px 30px rgba(15,23,42,.08);border:1px solid var(--border);margin-bottom:1.3rem}
-.dept-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:.85rem}
-.dept-btn{background:transparent;border:none;padding:9px 6px;border-radius:9px;font-weight:700;font-size:.86rem;color:var(--muted);cursor:pointer}
+.union-pill{background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.35);color:#38bdf8;padding:4px 11px;border-radius:50px;font-size:.7rem;font-weight:700}
+.hero{background:radial-gradient(circle at top right,#1e293b,#0f172a);color:#fff;padding:1.6rem 5% 3.6rem;text-align:center}
+.hero h2{font-size:1.55rem;font-weight:800;margin-bottom:.3rem}
+.hero p{color:#cbd5e1;font-size:.84rem;max-width:480px;margin:0 auto}
+.container{max-width:780px;margin:-2.3rem auto 3rem;padding:0 4%;position:relative;z-index:10}
+.notice-card{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:1.5px solid #fcd34d;border-radius:16px;padding:.95rem 1.1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:11px;box-shadow:0 8px 20px rgba(245,158,11,.12)}
+.notice-icon{background:#f59e0b;color:#fff;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;margin-top:2px}
+.notice-body h4{font-size:.78rem;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.notice-body p{font-size:.82rem;color:#78350f;font-weight:600}
+.main-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.2rem}
+.mode-card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:1rem .8rem;text-align:center;cursor:pointer;box-shadow:0 6px 18px rgba(15,23,42,.05);transition:all .2s}
+.mode-card i{font-size:1.25rem;margin-bottom:5px;display:block;color:var(--muted)}
+.mode-card h3{font-size:.92rem;font-weight:800;color:var(--text)}
+.mode-card span{font-size:.7rem;color:var(--muted);display:block;font-weight:600}
+.mode-card.active-study{border-color:var(--accent);background:#f0f9ff}
+.mode-card.active-study i,.mode-card.active-study h3{color:#0284c7}
+.mode-card.active-voice{border-color:var(--purple);background:#eef2ff}
+.mode-card.active-voice i,.mode-card.active-voice h3{color:#4f46e5}
+.control-box{background:#fff;border-radius:18px;padding:1.05rem;box-shadow:0 8px 24px rgba(15,23,42,.05);border:1px solid var(--border);margin-bottom:1.2rem}
+.dept-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f1f5f9;padding:4px;border-radius:11px;margin-bottom:.8rem}
+.dept-btn{background:transparent;border:none;padding:8px 5px;border-radius:8px;font-weight:700;font-size:.85rem;color:var(--muted);cursor:pointer}
 .dept-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .filter-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.tab-btn{background:#f8fafc;border:1.5px solid var(--border);padding:8px 5px;border-radius:9px;font-weight:700;font-size:.75rem;color:var(--muted);cursor:pointer}
+.tab-btn{background:#f8fafc;border:1.5px solid var(--border);padding:8px 4px;border-radius:9px;font-weight:700;font-size:.74rem;color:var(--muted);cursor:pointer}
 .tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-bottom:2.2rem}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
 .res-card{background:#fff;border-radius:16px;padding:1.2rem;border:1px solid var(--border);box-shadow:0 5px 15px rgba(15,23,42,.04);display:flex;flex-direction:column;justify-content:space-between}
 .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
 .sem-badge{background:#e0f2fe;color:#0284c7;font-size:.7rem;font-weight:800;padding:4px 10px;border-radius:50px}
@@ -48,10 +60,11 @@ body{background:var(--bg);color:var(--text);line-height:1.5}
 .fg label{display:block;font-size:.78rem;font-weight:700;margin-bottom:.35rem}
 .fc{width:100%;padding:11px 13px;border-radius:11px;border:1.5px solid var(--border);background:#f8fafc;font-size:.88rem;outline:none}
 .fc:focus{border-color:var(--purple);background:#fff}
-textarea.fc{min-height:110px;resize:vertical}
+textarea.fc{min-height:120px;resize:vertical}
 .sub-btn{width:100%;background:linear-gradient(135deg,#0f172a,#4f46e5);color:#fff;border:none;padding:13px;border-radius:11px;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .alert-ok{display:none;margin-top:.9rem;padding:11px;border-radius:10px;background:#dcfce7;color:#15803d;font-size:.82rem;font-weight:700;text-align:center}
-footer{text-align:center;padding:1.5rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
+.hidden{display:none!important}
+footer{text-align:center;padding:1.8rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
 footer a{color:#0284c7;font-weight:700;text-decoration:none}
 </style>
 </head>
@@ -61,51 +74,73 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
     <div><h1>GITE Academic Hub</h1><span>Malappuram</span></div>
   </div>
-  <a href="#open-voice" class="nav-voice"><i class="fa-solid fa-user-secret"></i> Open Voice</a>
+  <span class="union-pill">Zevora 2026–27</span>
 </nav>
 <header class="hero">
-  <div class="hero-tag">Zevora College Union 2026–27</div>
-  <h2>D.El.Ed Digital Study Hub</h2>
-  <p>Access organized semester notes, question papers, and share your voice anonymously.</p>
+  <h2>D.El.Ed Student Portal</h2>
+  <p>Study resources, union updates & 100% anonymous student voice.</p>
 </header>
 <main class="container">
-  <div class="control-box">
-    <div class="dept-tabs">
-      <button type="button" class="dept-btn active" id="d-general" onclick="setDept('general')">General</button>
-      <button type="button" class="dept-btn" id="d-urdu" onclick="setDept('urdu')">Urdu</button>
-      <button type="button" class="dept-btn" id="d-arabic" onclick="setDept('arabic')">Arabic</button>
-    </div>
-    <div class="filter-tabs">
-      <button type="button" class="tab-btn active" id="t-notes" onclick="setType('notes')">Study Notes</button>
-      <button type="button" class="tab-btn" id="t-qp" onclick="setType('qp')">Question Papers</button>
-      <button type="button" class="tab-btn" id="t-teaching" onclick="setType('teaching')">Teaching Manuals</button>
+  <div class="notice-card">
+    <div class="notice-icon"><i class="fa-solid fa-bullhorn"></i></div>
+    <div class="notice-body">
+      <h4>General Notice • Zevora Union</h4>
+      <p>Welcome to GITE Academic Hub! All Semester Notes, Question Papers & 100% Anonymous Open Voice Portal are now live.</p>
     </div>
   </div>
-  <div class="resource-grid" id="grid"></div>
-  <section class="voice-box" id="open-voice">
-    <div class="ov-head">
-      <h2><i class="fa-solid fa-shield-halved" style="color:#6366f1"></i> Open Voice</h2>
-      <span class="anon-badge">100% Anonymous</span>
+  <div class="main-switch">
+    <div class="mode-card active-study" id="btnStudy" onclick="switchMode('study')">
+      <i class="fa-solid fa-book-open-reader"></i>
+      <h3>Study Hub</h3>
+      <span>Notes & Question Papers</span>
     </div>
-    <div class="ov-desc"><i class="fa-solid fa-lock"></i> പേരോ ഇമെയിലോ ശേഖരിക്കുന്നതല്ല. നിങ്ങളുടെ സന്ദേശം പൂർണ്ണമായും രഹസ്യമായി <strong>Zevora College Union</strong>-ലേക്ക് നേരിട്ട് ലഭിക്കുന്നതാണ്.</div>
-    <form onsubmit="sendMsg(event)">
-      <div class="fg">
-        <label>Category / വിഷയം</label>
-        <select id="cat" class="fc">
-          <option value="Academic & Classes">Academic & Classes</option>
-          <option value="Campus Facilities">Campus Facilities</option>
-          <option value="Union Programs & Suggestions">Union Programs & Suggestions</option>
-          <option value="General Grievance">General Grievance</option>
-        </select>
+    <div class="mode-card" id="btnVoice" onclick="switchMode('voice')">
+      <i class="fa-solid fa-user-secret"></i>
+      <h3>Open Voice</h3>
+      <span>100% Anonymous Box</span>
+    </div>
+  </div>
+  <div id="viewStudy">
+    <div class="control-box">
+      <div class="dept-tabs">
+        <button type="button" class="dept-btn active" id="d-general" onclick="setDept('general')">General</button>
+        <button type="button" class="dept-btn" id="d-urdu" onclick="setDept('urdu')">Urdu</button>
+        <button type="button" class="dept-btn" id="d-arabic" onclick="setDept('arabic')">Arabic</button>
       </div>
-      <div class="fg">
-        <label>Anonymous Message / നിങ്ങളുടെ സന്ദേശം</label>
-        <textarea id="msg" class="fc" placeholder="Write your feedback or complaint freely..." required></textarea>
+      <div class="filter-tabs">
+        <button type="button" class="tab-btn active" id="t-notes" onclick="setType('notes')">Study Notes</button>
+        <button type="button" class="tab-btn" id="t-qp" onclick="setType('qp')">Question Papers</button>
+        <button type="button" class="tab-btn" id="t-teaching" onclick="setType('teaching')">Teaching Manuals</button>
       </div>
-      <button type="submit" id="sbtn" class="sub-btn"><i class="fa-solid fa-paper-plane"></i> Send Anonymously</button>
-      <div id="ok" class="alert-ok"></div>
-    </form>
-  </section>
+    </div>
+    <div class="resource-grid" id="grid"></div>
+  </div>
+  <div id="viewVoice" class="hidden">
+    <section class="voice-box">
+      <div class="ov-head">
+        <h2><i class="fa-solid fa-shield-halved" style="color:#6366f1"></i> Open Voice Portal</h2>
+        <span class="anon-badge">100% Anonymous</span>
+      </div>
+      <div class="ov-desc"><i class="fa-solid fa-lock"></i> പേരോ ഇമെയിലോ ശേഖരിക്കുന്നതല്ല. നിങ്ങളുടെ അഭിപ്രായങ്ങളും പരാതികളും പൂർണ്ണമായും രഹസ്യമായി <strong>Zevora College Union</strong>-ലേക്ക് നേരിട്ട് ലഭിക്കുന്നതാണ്.</div>
+      <form onsubmit="sendMsg(event)">
+        <div class="fg">
+          <label>Category / വിഷയം</label>
+          <select id="cat" class="fc">
+            <option value="Academic & Classes">Academic & Classes</option>
+            <option value="Campus Facilities">Campus Facilities</option>
+            <option value="Union Programs & Suggestions">Union Programs & Suggestions</option>
+            <option value="General Grievance">General Grievance</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Anonymous Message / നിങ്ങളുടെ സന്ദേശം</label>
+          <textarea id="msg" class="fc" placeholder="Write your feedback, suggestion, or complaint freely without fear..." required></textarea>
+        </div>
+        <button type="submit" id="sbtn" class="sub-btn"><i class="fa-solid fa-paper-plane"></i> Send Anonymously</button>
+        <div id="ok" class="alert-ok"></div>
+      </form>
+    </section>
+  </div>
 </main>
 <footer>
   <p>Have notes to share? <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank">Share via WhatsApp →</a></p>
@@ -119,6 +154,12 @@ urdu:{n1:"https://drive.google.com/drive/folders/13O9e3aeHfEQQeynpc-yspokO2evPGr
 arabic:{n1:"https://drive.google.com/drive/folders/1OCXOrEc3gpjJ7yvFi9s4yOG8ydGV561u",q1:"https://drive.google.com/drive/folders/1qO2XHfSLN5bwYFdz4IPqmjfgZfFtRRvz",n2:"https://drive.google.com/drive/folders/1jL6pGnWPXxCnbsj5We3vYmIBUvHEyrNg",q2:"https://drive.google.com/drive/folders/1HSNVuOYXgodSDl4OagKmhxKehfH1iF8J",n3:"https://drive.google.com/drive/folders/1aDpsY-xkEuAI_uP2uBu6E3MAO4A_YpTk",q3:"https://drive.google.com/drive/folders/17BGOIszF96_UWaX8E4FrnpIULwh_xmBs",n4:"https://drive.google.com/drive/folders/1wZlz3Uu1cjgZl8ZgYZUGrBx-4b8ubJ9h",q4:"https://drive.google.com/drive/folders/1Kas-FYL2yeKi5-MeRve2KPh0UymjYkZ3",tm:"https://drive.google.com/drive/folders/1sU8KFTViyNeUj_9W_qIGO4g-qBJlsL_Q"}
 };
 let dept="general",type="notes";
+function switchMode(m){
+document.getElementById("viewStudy").classList.toggle("hidden",m!=="study");
+document.getElementById("viewVoice").classList.toggle("hidden",m!=="voice");
+document.getElementById("btnStudy").className="mode-card"+(m==="study"?" active-study":"");
+document.getElementById("btnVoice").className="mode-card"+(m==="voice"?" active-voice":"");
+}
 function setDept(d){dept=d;["general","urdu","arabic"].forEach(x=>document.getElementById("d-"+x).classList.toggle("active",x===d));draw()}
 function setType(t){type=t;["notes","qp","teaching"].forEach(x=>document.getElementById("t-"+x).classList.toggle("active",x===t));draw()}
 function draw(){

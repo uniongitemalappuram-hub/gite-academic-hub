@@ -298,8 +298,8 @@
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 6px;
-            background: #f1f5f9;
-            color: #334155;
+            background: #dcfce7;
+            color: #15803d;
         }
 
         .card h3 {
@@ -323,19 +323,18 @@
             width: 100%;
             padding: 12px;
             border-radius: 10px;
-            background: #f8fafc;
-            color: var(--primary);
+            background: var(--accent);
+            color: white;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.88rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--accent);
             transition: all 0.2s ease;
         }
 
         .card-btn:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
         }
 
         /* Contribute Section */
@@ -480,40 +479,39 @@
     </footer>
 
     <script>
-        // ഇവിടെ ഓരോ വിഭാഗത്തിന്റെയും Google Drive ലിങ്കുകൾ ചേർക്കാം ('#' മാറ്റി ലിങ്ക് കൊടുക്കുക)
         const driveLinks = {
             general: {
-                sem1_notes: "#",
-                sem2_notes: "#",
-                sem3_notes: "#",
-                sem4_notes: "#",
-                sem1_qp: "#",
-                sem2_qp: "#",
-                sem3_qp: "#",
-                sem4_qp: "#",
-                teaching: "#"
+                sem1_notes: "https://drive.google.com/drive/folders/190GGjhPnYxuYjtNr_3PHsUuodkRGAqZG",
+                sem1_qp: "https://drive.google.com/drive/folders/1gybTFPngLIUXI8eifeaCDcY8Vnfy0LGb",
+                sem2_notes: "https://drive.google.com/drive/folders/1Q2ccfr2xvxu36CSADSeZxjnnHHDWnSMy",
+                sem2_qp: "https://drive.google.com/drive/folders/1WiN7o7Q9P95Pbp4mZ9d7s-xB9hEqolEY",
+                sem3_notes: "https://drive.google.com/drive/folders/19PaHm1LK5PO8ED0XKuQiq6QxqOD50GsB",
+                sem3_qp: "https://drive.google.com/drive/folders/1yALJxxwFFc13VtJc1gGRzdVVl_TFdVTK",
+                sem4_notes: "https://drive.google.com/drive/folders/1gHztDKy4tSglG2QA4ozYChE5aGYUbtK9",
+                sem4_qp: "https://drive.google.com/drive/folders/1GBv8kOBZ7yrRaHzpi-tnTdkLdFKIEXGw",
+                teaching: "https://drive.google.com/drive/folders/1Rf9ri-MWHkCpvbeyF5mTYC_grHdqOZuC"
             },
             urdu: {
-                sem1_notes: "#",
-                sem2_notes: "#",
-                sem3_notes: "#",
-                sem4_notes: "#",
-                sem1_qp: "#",
-                sem2_qp: "#",
-                sem3_qp: "#",
-                sem4_qp: "#",
-                teaching: "#"
+                sem1_notes: "https://drive.google.com/drive/folders/13O9e3aeHfEQQeynpc-yspokO2evPGrFO",
+                sem1_qp: "https://drive.google.com/drive/folders/1R-cI9dxyq-rwodo3BXV2Jn_yc4He_GdC",
+                sem2_notes: "https://drive.google.com/drive/folders/1wuOm3jv8NL3uTQMnrClffJGuuIQr9_P4",
+                sem2_qp: "https://drive.google.com/drive/folders/1nO1qYfyokCMx_iPUCA44lSq3429JVzIO",
+                sem3_notes: "https://drive.google.com/drive/folders/1SiCdmKcdDqi1cbKBcoSrLi3DOzN7RO08",
+                sem3_qp: "https://drive.google.com/drive/folders/1ENJn9Eaj-5TxP8vnjQNS7Jzru2m8MSyR",
+                sem4_notes: "https://drive.google.com/drive/folders/1X17NFwnomoKEErrASPk-xSmvYkioMc8X",
+                sem4_qp: "https://drive.google.com/drive/folders/100AnhmyzpSmQcGwwgMG5PRLzzd5Puyyo",
+                teaching: "https://drive.google.com/drive/folders/1aFngBGMEtP8vQ5PChFjJmts9Q7n6hPb2"
             },
             arabic: {
-                sem1_notes: "#",
-                sem2_notes: "#",
-                sem3_notes: "#",
-                sem4_notes: "#",
-                sem1_qp: "#",
-                sem2_qp: "#",
-                sem3_qp: "#",
-                sem4_qp: "#",
-                teaching: "#"
+                sem1_notes: "https://drive.google.com/drive/folders/1OCXOrEc3gpjJ7yvFi9s4yOG8ydGV561u",
+                sem1_qp: "https://drive.google.com/drive/folders/1qO2XHfSLN5bwYFdz4IPqmjfgZfFtRRvz",
+                sem2_notes: "https://drive.google.com/drive/folders/1jL6pGnWPXxCnbsj5We3vYmIBUvHEyrNg",
+                sem2_qp: "https://drive.google.com/drive/folders/1HSNVuOYXgodSDl4OagKmhxKehfH1iF8J",
+                sem3_notes: "https://drive.google.com/drive/folders/1aDpsY-xkEuAI_uP2uBu6E3MAO4A_YpTk",
+                sem3_qp: "https://drive.google.com/drive/folders/17BGOIszF96_UWaX8E4FrnpIULwh_xmBs",
+                sem4_notes: "https://drive.google.com/drive/folders/1wZlz3Uu1cjgZl8ZgYZUGrBx-4b8ubJ9h",
+                sem4_qp: "https://drive.google.com/drive/folders/1Kas-FYL2yeKi5-MeRve2KPh0UymjYkZ3",
+                teaching: "https://drive.google.com/drive/folders/1sU8KFTViyNeUj_9W_qIGO4g-qBJlsL_Q"
             }
         };
 
@@ -551,12 +549,12 @@
                             <div>
                                 <div class="card-header">
                                     <div class="card-icon ${item.color}"><i class="fa-solid ${item.icon}"></i></div>
-                                    <span class="dept-pill">${deptTitle}</span>
+                                    <span class="dept-pill">${deptTitle} • Active</span>
                                 </div>
                                 <h3>${item.title}</h3>
                                 <p>${item.desc}</p>
                             </div>
-                            <a href="${url}" target="_blank" class="card-btn" onclick="checkLink(event, '${url}')">
+                            <a href="${url}" target="_blank" class="card-btn">
                                 <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
@@ -581,6 +579,9 @@
 
         document.getElementById('searchInput').addEventListener('keyup', renderCards);
 
-        function checkLink(event, url) {
-            if (url === '#') {
-                event.preventD
+        // Initial Load
+        renderCards();
+    </script>
+
+</body>
+</html>

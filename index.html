@@ -91,7 +91,7 @@
             font-weight: 600;
         }
 
-        /* Hero Section with Auto College Photo Support */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.92) 100%), url('college.jpg') center/cover no-repeat;
             color: white;
@@ -116,7 +116,7 @@
         .hero h2 {
             font-size: 2.3rem;
             font-weight: 800;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto 1rem;
             line-height: 1.2;
             letter-spacing: -0.5px;
@@ -165,13 +165,62 @@
             z-index: 10;
         }
 
-        /* Filter Tabs */
+        /* Department Selector Box */
+        .dept-wrapper {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .dept-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            display: block;
+            text-align: center;
+        }
+
+        .dept-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .dept-btn {
+            background: #f1f5f9;
+            border: 2px solid transparent;
+            padding: 12px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dept-btn.active {
+            background: #e0f2fe;
+            color: #0284c7;
+            border-color: #0ea5e9;
+        }
+
+        /* Type Filter Tabs */
         .filter-tabs {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             padding-bottom: 10px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             scrollbar-width: none;
         }
 
@@ -182,7 +231,7 @@
         .tab-btn {
             background: white;
             border: 1px solid var(--border);
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 10px;
             font-weight: 600;
             font-size: 0.85rem;
@@ -190,7 +239,6 @@
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
         .tab-btn.active, .tab-btn:hover {
@@ -245,22 +293,17 @@
         .icon-green { background: #d1fae5; color: #059669; }
         .icon-purple { background: #f3e8ff; color: #7e22ce; }
 
-        .status-badge {
+        .dept-pill {
             font-size: 0.72rem;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 6px;
             background: #f1f5f9;
-            color: #475569;
-        }
-
-        .status-live {
-            background: #dcfce7;
-            color: #15803d;
+            color: #334155;
         }
 
         .card h3 {
-            font-size: 1.15rem;
+            font-size: 1.12rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--text-main);
@@ -354,8 +397,9 @@
         }
 
         @media (max-width: 600px) {
-            .hero h2 { font-size: 1.75rem; }
+            .hero h2 { font-size: 1.7rem; }
             .union-badge { display: none; }
+            .dept-btn { font-size: 0.85rem; padding: 10px 6px; }
             .contribute-box { padding: 1.8rem; text-align: center; justify-content: center; }
         }
     </style>
@@ -368,7 +412,7 @@
             <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <div class="brand-text">
                 <h1>GITE Academic Hub</h1>
-                <span>Down Hill, Malappuram</span>
+                <span>Malappuram</span>
             </div>
         </div>
         <div class="union-badge">Zevora Union 2026-27</div>
@@ -377,126 +421,50 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-tag"><i class="fa-solid fa-sparkles"></i> Zevora Digital Drive Initiative</div>
-        <h2>Your Complete D.El.Ed Study & Resource Portal</h2>
-        <p>Access curated lecture notes, previous year question papers, teaching manuals, and syllabus materials anytime, anywhere.</p>
+        <h2>D.El.Ed Study & Resource Portal</h2>
+        <p>Select your stream (General, Urdu, or Arabic) to access semester-wise notes, previous question papers, and teaching manuals.</p>
         
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search semester, question papers, manuals...">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search semester 1, question papers, manuals...">
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container">
         
-        <!-- Filter Tabs -->
+        <!-- Department Selector -->
+        <div class="dept-wrapper">
+            <span class="dept-label">Select Your Stream / വിഭാഗം തിരഞ്ഞെടുക്കുക</span>
+            <div class="dept-tabs">
+                <button class="dept-btn active" onclick="selectDept('general', this)">
+                    <i class="fa-solid fa-book-open"></i> General
+                </button>
+                <button class="dept-btn" onclick="selectDept('urdu', this)">
+                    <i class="fa-solid fa-feather-pointed"></i> Urdu
+                </button>
+                <button class="dept-btn" onclick="selectDept('arabic', this)">
+                    <i class="fa-solid fa-mosque"></i> Arabic
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
         <div class="filter-tabs">
-            <button class="tab-btn active" onclick="filterCards('all', this)">All Resources</button>
-            <button class="tab-btn" onclick="filterCards('semester', this)">Semester Notes</button>
-            <button class="tab-btn" onclick="filterCards('exams', this)">Question Papers</button>
-            <button class="tab-btn" onclick="filterCards('teaching', this)">Teaching Practice</button>
+            <button class="tab-btn active" onclick="selectType('all', this)">All Materials</button>
+            <button class="tab-btn" onclick="selectType('notes', this)">Semester Notes</button>
+            <button class="tab-btn" onclick="selectType('qp', this)">Question Papers</button>
+            <button class="tab-btn" onclick="selectType('teaching', this)">Teaching Manuals</button>
         </div>
 
-        <!-- Cards Grid -->
-        <div class="grid" id="resourceGrid">
-            
-            <!-- Semester 1 -->
-            <div class="card" data-category="semester">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-blue"><i class="fa-solid fa-book-open"></i></div>
-                        <span class="status-badge status-live">Updating</span>
-                    </div>
-                    <h3>Semester 1 Notes</h3>
-                    <p>Core subjects, child psychology, educational philosophy, and foundational PDF notes for 1st Semester.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Semester 2 -->
-            <div class="card" data-category="semester">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-blue"><i class="fa-solid fa-book"></i></div>
-                        <span class="status-badge status-live">Updating</span>
-                    </div>
-                    <h3>Semester 2 Notes</h3>
-                    <p>Pedagogical subjects, curriculum studies, and subject-wise study materials for 2nd Semester.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Semester 3 -->
-            <div class="card" data-category="semester">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-blue"><i class="fa-solid fa-layer-group"></i></div>
-                        <span class="status-badge">Coming Soon</span>
-                    </div>
-                    <h3>Semester 3 Notes</h3>
-                    <p>Advanced pedagogy, school internship guidelines, and 3rd Semester reference notes.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Semester 4 -->
-            <div class="card" data-category="semester">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-blue"><i class="fa-solid fa-award"></i></div>
-                        <span class="status-badge">Coming Soon</span>
-                    </div>
-                    <h3>Semester 4 Notes</h3>
-                    <p>Final semester modules, project reports, and comprehensive exam revision guides.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Question Papers -->
-            <div class="card" data-category="exams">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-purple"><i class="fa-solid fa-file-lines"></i></div>
-                        <span class="status-badge status-live">Updating</span>
-                    </div>
-                    <h3>Previous Question Papers</h3>
-                    <p>Year-wise D.El.Ed board examination question papers and answer keys for exam preparation.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Teaching Practice -->
-            <div class="card" data-category="teaching">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon icon-green"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <span class="status-badge status-live">Updating</span>
-                    </div>
-                    <h3>Teaching Manuals & TLM</h3>
-                    <p>Sample lesson plans, activity worksheets, TLM ideas, and school induction record formats.</p>
-                </div>
-                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
-                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-        </div>
+        <!-- Dynamic Cards Grid -->
+        <div class="grid" id="resourceGrid"></div>
 
         <!-- Contribute Section -->
         <div class="contribute-box">
             <div class="contribute-text">
                 <h3>Have helpful study notes?</h3>
-                <p>Share your handwritten notes, PDFs, or teaching aids with Zevora College Union to help fellow students.</p>
+                <p>Share your General, Urdu, or Arabic notes and question papers with Zevora College Union to help fellow students.</p>
             </div>
             <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank" class="contribute-btn">
                 <i class="fa-brands fa-whatsapp"></i> Share Notes with Union
@@ -508,44 +476,111 @@
     <!-- Footer -->
     <footer>
         <p>An initiative by <strong>Zevora College Union (2026–27)</strong></p>
-        <p style="margin-top: 4px; font-size: 0.78rem;">Government Institute of Teacher Education (GITE), Down Hill, Malappuram</p>
+        <p style="margin-top: 4px; font-size: 0.78rem;">Government Institute of Teacher Education (GITE), Malappuram</p>
     </footer>
 
     <script>
-        // Search Function
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
-            
-            cards.forEach(card => {
-                let text = card.innerText.toLowerCase();
-                card.style.display = text.includes(filter) ? 'flex' : 'none';
-            });
-        });
+        // ഇവിടെ ഓരോ വിഭാഗത്തിന്റെയും Google Drive ലിങ്കുകൾ ചേർക്കാം ('#' മാറ്റി ലിങ്ക് കൊടുക്കുക)
+        const driveLinks = {
+            general: {
+                sem1_notes: "#",
+                sem2_notes: "#",
+                sem3_notes: "#",
+                sem4_notes: "#",
+                sem1_qp: "#",
+                sem2_qp: "#",
+                sem3_qp: "#",
+                sem4_qp: "#",
+                teaching: "#"
+            },
+            urdu: {
+                sem1_notes: "#",
+                sem2_notes: "#",
+                sem3_notes: "#",
+                sem4_notes: "#",
+                sem1_qp: "#",
+                sem2_qp: "#",
+                sem3_qp: "#",
+                sem4_qp: "#",
+                teaching: "#"
+            },
+            arabic: {
+                sem1_notes: "#",
+                sem2_notes: "#",
+                sem3_notes: "#",
+                sem4_notes: "#",
+                sem1_qp: "#",
+                sem2_qp: "#",
+                sem3_qp: "#",
+                sem4_qp: "#",
+                teaching: "#"
+            }
+        };
 
-        // Category Filter Function
-        function filterCards(category, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        let currentDept = 'general';
+        let currentType = 'all';
 
-            let cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
+        function renderCards() {
+            const grid = document.getElementById('resourceGrid');
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const deptTitle = currentDept.charAt(0).toUpperCase() + currentDept.slice(1);
+            const links = driveLinks[currentDept];
+
+            const items = [
+                { id: 'sem1_notes', type: 'notes', icon: 'fa-book-open', color: 'icon-blue', title: `Semester 1 Notes (${deptTitle})`, desc: `Complete 1st Semester study materials and PDF notes for D.El.Ed ${deptTitle} stream.` },
+                { id: 'sem2_notes', type: 'notes', icon: 'fa-book', color: 'icon-blue', title: `Semester 2 Notes (${deptTitle})`, desc: `Complete 2nd Semester study materials and PDF notes for D.El.Ed ${deptTitle} stream.` },
+                { id: 'sem3_notes', type: 'notes', icon: 'fa-layer-group', color: 'icon-blue', title: `Semester 3 Notes (${deptTitle})`, desc: `Complete 3rd Semester study materials and PDF notes for D.El.Ed ${deptTitle} stream.` },
+                { id: 'sem4_notes', type: 'notes', icon: 'fa-award', color: 'icon-blue', title: `Semester 4 Notes (${deptTitle})`, desc: `Complete 4th Semester study materials and PDF notes for D.El.Ed ${deptTitle} stream.` },
+                { id: 'sem1_qp', type: 'qp', icon: 'fa-file-lines', color: 'icon-purple', title: `Semester 1 Question Papers`, desc: `Previous year board exam question papers for ${deptTitle} 1st Semester.` },
+                { id: 'sem2_qp', type: 'qp', icon: 'fa-file-lines', color: 'icon-purple', title: `Semester 2 Question Papers`, desc: `Previous year board exam question papers for ${deptTitle} 2nd Semester.` },
+                { id: 'sem3_qp', type: 'qp', icon: 'fa-file-lines', color: 'icon-purple', title: `Semester 3 Question Papers`, desc: `Previous year board exam question papers for ${deptTitle} 3rd Semester.` },
+                { id: 'sem4_qp', type: 'qp', icon: 'fa-file-lines', color: 'icon-purple', title: `Semester 4 Question Papers`, desc: `Previous year board exam question papers for ${deptTitle} 4th Semester.` },
+                { id: 'teaching', type: 'teaching', icon: 'fa-chalkboard-user', color: 'icon-green', title: `Teaching Manuals & TLM (${deptTitle})`, desc: `Lesson plans, activity sheets, and TLM resources tailored for ${deptTitle} teaching practice.` }
+            ];
+
+            grid.innerHTML = '';
+
+            items.forEach(item => {
+                const matchesType = (currentType === 'all' || item.type === currentType);
+                const matchesSearch = (item.title.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery));
+
+                if (matchesType && matchesSearch) {
+                    const url = links[item.id];
+                    grid.innerHTML += `
+                        <div class="card">
+                            <div>
+                                <div class="card-header">
+                                    <div class="card-icon ${item.color}"><i class="fa-solid ${item.icon}"></i></div>
+                                    <span class="dept-pill">${deptTitle}</span>
+                                </div>
+                                <h3>${item.title}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <a href="${url}" target="_blank" class="card-btn" onclick="checkLink(event, '${url}')">
+                                <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    `;
                 }
             });
         }
 
-        // Alert if Drive link is not added yet
-        function checkLink(event, element) {
-            if (element.getAttribute('href') === '#') {
-                event.preventDefault();
-                alert('ഈ ഫോൾഡറിലേക്കുള്ള നോട്ടുകൾ ഉടൻ അപ്‌ലോഡ് ചെയ്യുന്നതാണ്! (Folder link will be updated soon by Zevora Union)');
-            }
+        function selectDept(dept, btn) {
+            currentDept = dept;
+            document.querySelectorAll('.dept-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderCards();
         }
-    </script>
 
-</body>
-</html>
+        function selectType(type, btn) {
+            currentType = type;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderCards();
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', renderCards);
+
+        function checkLink(event, url) {
+            if (url === '#') {
+                event.preventD

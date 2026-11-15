@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GITE Academic Hub | Zevora College Union 2026-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --emerald: #10b981;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            background: linear-gradient(135deg, var(--accent), var(--emerald));
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .brand-text h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text span {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .union-badge {
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: #38bdf8;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section with Auto College Photo Support */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.92) 100%), url('college.jpg') center/cover no-repeat;
+            color: white;
+            padding: 4.5rem 5% 5.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .hero h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            color: #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px 16px 50px;
+            border-radius: 14px;
+            border: none;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            outline: none;
+            color: var(--text-main);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1150px;
+            margin: -2.5rem auto 4rem;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 2rem;
+            scrollbar-width: none;
+        }
+
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Resource Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.6rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .icon-blue { background: #e0f2fe; color: #0284c7; }
+        .icon-green { background: #d1fae5; color: #059669; }
+        .icon-purple { background: #f3e8ff; color: #7e22ce; }
+
+        .status-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .status-live {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .card-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Contribute Section */
+        .contribute-box {
+            margin-top: 3.5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .contribute-text h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .contribute-text p {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            max-width: 550px;
+        }
+
+        .contribute-btn {
+            background: var(--emerald);
+            color: white;
+            padding: 14px 26px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .contribute-btn:hover {
+            background: #059669;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        footer strong {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 1.75rem; }
+            .union-badge { display: none; }
+            .contribute-box { padding: 1.8rem; text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="brand-text">
+                <h1>GITE Academic Hub</h1>
+                <span>Down Hill, Malappuram</span>
+            </div>
+        </div>
+        <div class="union-badge">Zevora Union 2026-27</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-tag"><i class="fa-solid fa-sparkles"></i> Zevora Digital Drive Initiative</div>
+        <h2>Your Complete D.El.Ed Study & Resource Portal</h2>
+        <p>Access curated lecture notes, previous year question papers, teaching manuals, and syllabus materials anytime, anywhere.</p>
+        
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search semester, question papers, manuals...">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterCards('all', this)">All Resources</button>
+            <button class="tab-btn" onclick="filterCards('semester', this)">Semester Notes</button>
+            <button class="tab-btn" onclick="filterCards('exams', this)">Question Papers</button>
+            <button class="tab-btn" onclick="filterCards('teaching', this)">Teaching Practice</button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid" id="resourceGrid">
+            
+            <!-- Semester 1 -->
+            <div class="card" data-category="semester">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-blue"><i class="fa-solid fa-book-open"></i></div>
+                        <span class="status-badge status-live">Updating</span>
+                    </div>
+                    <h3>Semester 1 Notes</h3>
+                    <p>Core subjects, child psychology, educational philosophy, and foundational PDF notes for 1st Semester.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Semester 2 -->
+            <div class="card" data-category="semester">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-blue"><i class="fa-solid fa-book"></i></div>
+                        <span class="status-badge status-live">Updating</span>
+                    </div>
+                    <h3>Semester 2 Notes</h3>
+                    <p>Pedagogical subjects, curriculum studies, and subject-wise study materials for 2nd Semester.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Semester 3 -->
+            <div class="card" data-category="semester">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-blue"><i class="fa-solid fa-layer-group"></i></div>
+                        <span class="status-badge">Coming Soon</span>
+                    </div>
+                    <h3>Semester 3 Notes</h3>
+                    <p>Advanced pedagogy, school internship guidelines, and 3rd Semester reference notes.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Semester 4 -->
+            <div class="card" data-category="semester">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-blue"><i class="fa-solid fa-award"></i></div>
+                        <span class="status-badge">Coming Soon</span>
+                    </div>
+                    <h3>Semester 4 Notes</h3>
+                    <p>Final semester modules, project reports, and comprehensive exam revision guides.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Question Papers -->
+            <div class="card" data-category="exams">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-purple"><i class="fa-solid fa-file-lines"></i></div>
+                        <span class="status-badge status-live">Updating</span>
+                    </div>
+                    <h3>Previous Question Papers</h3>
+                    <p>Year-wise D.El.Ed board examination question papers and answer keys for exam preparation.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Teaching Practice -->
+            <div class="card" data-category="teaching">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon icon-green"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <span class="status-badge status-live">Updating</span>
+                    </div>
+                    <h3>Teaching Manuals & TLM</h3>
+                    <p>Sample lesson plans, activity worksheets, TLM ideas, and school induction record formats.</p>
+                </div>
+                <a href="#" target="_blank" class="card-btn" onclick="checkLink(event, this)">
+                    <span>Open Drive Folder</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Contribute Section -->
+        <div class="contribute-box">
+            <div class="contribute-text">
+                <h3>Have helpful study notes?</h3>
+                <p>Share your handwritten notes, PDFs, or teaching aids with Zevora College Union to help fellow students.</p>
+            </div>
+            <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank" class="contribute-btn">
+                <i class="fa-brands fa-whatsapp"></i> Share Notes with Union
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>An initiative by <strong>Zevora College Union (2026–27)</strong></p>
+        <p style="margin-top: 4px; font-size: 0.78rem;">Government Institute of Teacher Education (GITE), Down Hill, Malappuram</p>
+    </footer>
+
+    <script>
+        // Search Function
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                card.style.display = text.includes(filter) ? 'flex' : 'none';
+            });
+        });
+
+        // Category Filter Function
+        function filterCards(category, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Alert if Drive link is not added yet
+        function checkLink(event, element) {
+            if (element.getAttribute('href') === '#') {
+                event.preventDefault();
+                alert('ഈ ഫോൾഡറിലേക്കുള്ള നോട്ടുകൾ ഉടൻ അപ്‌ലോഡ് ചെയ്യുന്നതാണ്! (Folder link will be updated soon by Zevora Union)');
+            }
+        }
+    </script>
+
+</body>
+</html>

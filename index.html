@@ -1,589 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GITE Academic Hub | Zevora Union 2026–27</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-page: #f3f5f9;
-            --card-white: #ffffff;
-            --navy-deep: #0b1120;
-            --navy-soft: #162038;
-            --royal: #2563eb;
-            --indigo: #4f46e5;
-            --emerald: #059669;
-            --text-dark: #0f172a;
-            --text-gray: #64748b;
-            --shadow-soft: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
-            --shadow-hover: 0 16px 35px -5px rgba(37, 99, 235, 0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-dark);
-            min-height: 100vh;
-            padding-bottom: 3rem;
-        }
-
-        .app-shell {
-            max-width: 540px;
-            margin: 0 auto;
-            padding: 1.2rem 1.1rem;
-        }
-
-        /* Premium Floating Header Card */
-        .premium-header {
-            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-soft) 100%);
-            border-radius: 26px;
-            padding: 1.6rem 1.5rem;
-            color: white;
-            box-shadow: 0 20px 40px -12px rgba(11, 17, 32, 0.35);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 1.4rem;
-        }
-
-        .premium-header::before {
-            content: '';
-            position: absolute;
-            top: -40px;
-            right: -40px;
-            width: 140px;
-            height: 140px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-        }
-
-        .logo-emblem {
-            width: 40px;
-            height: 40px;
-            border-radius: 13px;
-            background: linear-gradient(135deg, #38bdf8, #3b82f6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.05rem;
-            color: white;
-            box-shadow: 0 6px 15px rgba(56, 189, 248, 0.35);
-        }
-
-        .logo-title h1 {
-            font-size: 1.08rem;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-        }
-
-        .logo-title span {
-            font-size: 0.72rem;
-            color: #94a3b8;
-            display: block;
-            font-weight: 500;
-        }
-
-        .union-chip {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #e0f2fe;
-            letter-spacing: 0.3px;
-        }
-
-        .header-subtitle {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin-bottom: 1.2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Sleek Glass Segmented Toggle */
-        .glass-switch {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 4px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            z-index: 2;
-        }
-
-        .switch-btn {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            padding: 9px 12px;
-            border-radius: 11px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-        }
-
-        .switch-btn.active {
-            background: #ffffff;
-            color: var(--navy-deep);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Stream & Category Selectors */
-        .selector-area {
-            margin-bottom: 1.3rem;
-        }
-
-        .stream-bar {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 0.85rem;
-        }
-
-        .stream-pill {
-            background: var(--card-white);
-            border: 1.5px solid transparent;
-            padding: 11px 8px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-gray);
-            cursor: pointer;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.2s ease;
-        }
-
-        .stream-pill.active {
-            border-color: var(--royal);
-            color: var(--royal);
-            background: #eff6ff;
-        }
-
-        .type-bar {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .type-bar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .type-chip {
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid rgba(226, 232, 240, 0.9);
-            padding: 7px 15px;
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-gray);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-        }
-
-        .type-chip.active {
-            background: var(--navy-deep);
-            color: #ffffff;
-            border-color: var(--navy-deep);
-        }
-
-        /* Luxury Spacious Cards */
-        .cards-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-        }
-
-        .lux-card {
-            background: var(--card-white);
-            border-radius: 18px;
-            padding: 1.1rem 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .lux-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-color: #dbeafe;
-        }
-
-        .lux-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .lux-badge {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.95rem;
-            flex-shrink: 0;
-        }
-
-        .grad-blue {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            color: #2563eb;
-        }
-
-        .grad-indigo {
-            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
-            color: #4f46e5;
-        }
-
-        .grad-emerald {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            color: #059669;
-        }
-
-        .lux-meta h3 {
-            font-size: 0.96rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 2px;
-        }
-
-        .lux-meta p {
-            font-size: 0.76rem;
-            color: var(--text-gray);
-            font-weight: 500;
-        }
-
-        .lux-action {
-            width: 36px;
-            height: 36px;
-            border-radius: 11px;
-            background: #f8fafc;
-            color: var(--text-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.82rem;
-            transition: all 0.2s;
-        }
-
-        .lux-card:hover .lux-action {
-            background: var(--royal);
-            color: white;
-        }
-
-        /* Open Voice Luxury Card */
-        .voice-panel {
-            background: var(--card-white);
-            border-radius: 22px;
-            padding: 1.6rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .voice-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.85rem;
-        }
-
-        .voice-head h2 {
-            font-size: 1.15rem;
-            font-weight: 800;
-        }
-
-        .shield-pill {
-            background: #eef2ff;
-            color: var(--indigo);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 5px 11px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .anon-note {
-            background: #f8fafc;
-            border-left: 3px solid var(--indigo);
-            padding: 11px 13px;
-            border-radius: 10px;
-            font-size: 0.78rem;
-            color: var(--text-gray);
-            margin-bottom: 1.3rem;
-            line-height: 1.5;
-        }
-
-        .input-block {
-            margin-bottom: 1.15rem;
-        }
-
-        .input-block label {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.45rem;
-        }
-
-        .lux-field {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 13px;
-            border: 1.5px solid #e2e8f0;
-            background: #f8fafc;
-            font-size: 0.88rem;
-            color: var(--text-dark);
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .lux-field:focus {
-            border-color: var(--indigo);
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
-        }
-
-        textarea.lux-field {
-            min-height: 130px;
-            resize: vertical;
-        }
-
-        .lux-submit {
-            width: 100%;
-            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--indigo) 100%);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.35);
-            transition: transform 0.2s;
-        }
-
-        .lux-submit:hover {
-            transform: translateY(-1px);
-        }
-
-        .lux-submit:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .toast-ok {
-            display: none;
-            margin-top: 1rem;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: #ecfdf5;
-            color: #059669;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-align: center;
-            border: 1px solid #a7f3d0;
-        }
-
-        /* Minimal Footer */
-        .footer-note {
-            margin-top: 2.2rem;
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--text-gray);
-        }
-
-        .footer-note a {
-            color: var(--royal);
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GITE Academic Hub | Zevora Union 2026–27</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);line-height:1.5}
+.navbar{background:#0f172a;color:#fff;padding:.9rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{background:linear-gradient(135deg,#0ea5e9,#10b981);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.brand h1{font-size:1.05rem;font-weight:800}
+.brand span{font-size:.68rem;color:#94a3b8;display:block;text-transform:uppercase}
+.nav-voice{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;text-decoration:none;padding:7px 14px;border-radius:50px;font-size:.75rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.hero{background:radial-gradient(circle at top right,#1e293b,#0f172a);color:#fff;padding:2.4rem 5% 4rem;text-align:center}
+.hero-tag{display:inline-block;background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.3);color:#38bdf8;padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:700;margin-bottom:.7rem}
+.hero h2{font-size:1.65rem;font-weight:800;margin-bottom:.4rem}
+.hero p{color:#cbd5e1;font-size:.86rem;max-width:480px;margin:0 auto}
+.container{max-width:780px;margin:-2.2rem auto 3rem;padding:0 4%;position:relative;z-index:10}
+.control-box{background:#fff;border-radius:18px;padding:1.1rem;box-shadow:0 12px 30px rgba(15,23,42,.08);border:1px solid var(--border);margin-bottom:1.3rem}
+.dept-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f1f5f9;padding:4px;border-radius:12px;margin-bottom:.85rem}
+.dept-btn{background:transparent;border:none;padding:9px 6px;border-radius:9px;font-weight:700;font-size:.86rem;color:var(--muted);cursor:pointer}
+.dept-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.filter-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tab-btn{background:#f8fafc;border:1.5px solid var(--border);padding:8px 5px;border-radius:9px;font-weight:700;font-size:.75rem;color:var(--muted);cursor:pointer}
+.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-bottom:2.2rem}
+.res-card{background:#fff;border-radius:16px;padding:1.2rem;border:1px solid var(--border);box-shadow:0 5px 15px rgba(15,23,42,.04);display:flex;flex-direction:column;justify-content:space-between}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
+.sem-badge{background:#e0f2fe;color:#0284c7;font-size:.7rem;font-weight:800;padding:4px 10px;border-radius:50px}
+.sem-badge.purple{background:#eef2ff;color:#4f46e5}
+.sem-badge.green{background:#dcfce7;color:#059669}
+.res-card h3{font-size:1rem;font-weight:800;margin-bottom:.25rem}
+.res-card p{font-size:.78rem;color:var(--muted);margin-bottom:1rem}
+.open-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:#f8fafc;color:var(--primary);text-decoration:none;padding:9px;border-radius:10px;font-size:.82rem;font-weight:700;border:1px solid var(--border)}
+.open-btn:active{background:var(--accent);color:#fff}
+.voice-box{background:#fff;border-radius:20px;padding:1.5rem;border:1px solid var(--border);box-shadow:0 10px 28px rgba(15,23,42,.06);border-top:4px solid var(--purple)}
+.ov-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:.7rem}
+.ov-head h2{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.anon-badge{background:#eef2ff;color:#4f46e5;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:50px}
+.ov-desc{font-size:.78rem;color:var(--muted);background:#f8fafc;padding:9px 12px;border-radius:9px;border-left:3px solid var(--purple);margin-bottom:1.1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.78rem;font-weight:700;margin-bottom:.35rem}
+.fc{width:100%;padding:11px 13px;border-radius:11px;border:1.5px solid var(--border);background:#f8fafc;font-size:.88rem;outline:none}
+.fc:focus{border-color:var(--purple);background:#fff}
+textarea.fc{min-height:110px;resize:vertical}
+.sub-btn{width:100%;background:linear-gradient(135deg,#0f172a,#4f46e5);color:#fff;border:none;padding:13px;border-radius:11px;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.alert-ok{display:none;margin-top:.9rem;padding:11px;border-radius:10px;background:#dcfce7;color:#15803d;font-size:.82rem;font-weight:700;text-align:center}
+footer{text-align:center;padding:1.5rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
+footer a{color:#0284c7;font-weight:700;text-decoration:none}
+</style>
 </head>
 <body>
-
-    <div class="app-shell">
-        
-        <!-- Premium Floating Header -->
-        <header class="premium-header">
-            <div class="header-top">
-                <div class="logo-group">
-                    <div class="logo-emblem"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <div class="logo-title">
-                        <h1>GITE Academic Hub</h1>
-                        <span>Malappuram</span>
-                    </div>
-                </div>
-                <div class="union-chip">Zevora 2026–27</div>
-            </div>
-
-            <p class="header-subtitle">Curated D.El.Ed study repository & anonymous student voice portal.</p>
-
-            <div class="glass-switch">
-                <button class="switch-btn active" id="navStudy" onclick="setView('study')">
-                    <i class="fa-solid fa-layer-group"></i> Study Hub
-                </button>
-                <button class="switch-btn" id="navVoice" onclick="setView('voice')">
-                    <i class="fa-solid fa-user-secret"></i> Open Voice
-                </button>
-            </div>
-        </header>
-
-        <!-- STUDY HUB VIEW -->
-        <section id="sectionStudy">
-            <div class="selector-area">
-                <!-- Stream Tabs -->
-                <div class="stream-bar">
-                    <button class="stream-pill active" onclick="chooseDept('general', this)">General</button>
-                    <button class="stream-pill" onclick="chooseDept('urdu', this)">Urdu</button>
-                    <button class="stream-pill" onclick="chooseDept('arabic', this)">Arabic</button>
-                </div>
-
-                <!-- Category Chips -->
-                <div class="type-bar">
-                    <button class="type-chip active" onclick="chooseType('notes', this)">Study Notes</button>
-                    <button class="type-chip" onclick="chooseType('qp', this)">Question Papers</button>
-                    <button class="type-chip" onclick="chooseType('teaching', this)">Teaching Manuals</button>
-                </div>
-            </div>
-
-            <!-- Cards Stack -->
-            <div class="cards-stack" id="cardsStack"></div>
-        </section>
-
-        <!-- OPEN VOICE ANONYMOUS PORTAL VIEW -->
-        <section id="sectionVoice" class="hidden">
-            <div class="voice-panel">
-                <div class="voice-head">
-                    <h2>Open Voice</h2>
-                    <span class="shield-pill"><i class="fa-solid fa-shield-halved"></i> 100% Anonymous</span>
-                </div>
-
-                <div class="anon-note">
-                    <i class="fa-solid fa-lock"></i> പേരോ ഇമെയിലോ ഫോൺ നമ്പറോ ശേഖരിക്കുന്നതല്ല. നിങ്ങളുടെ അഭിപ്രായങ്ങളും പരാതികളും പൂർണ്ണമായും രഹസ്യമായി (Anonymously) <strong>Zevora College Union</strong>-ലേക്ക് നേരിട്ട് എത്തുന്നതാണ്.
-                </div>
-
-                <form id="voiceForm" onsubmit="sendVoice(event)">
-                    <div class="input-block">
-                        <label>Category / വിഷയം</label>
-                        <select id="vCategory" class="lux-field">
-                            <option value="Academic & Classes">Academic & Classes</option>
-                            <option value="Campus Facilities">Campus Facilities</option>
-                            <option value="Union Programs & Suggestions">Union Programs & Suggestions</option>
-                            <option value="General Grievance">General Grievance</option>
-                        </select>
-                    </div>
-
-                    <div class="input-block">
-                        <label>Anonymous Message / നിങ്ങളുടെ സന്ദേശം</label>
-                        <textarea id="vMessage" class="lux-field" placeholder="Write your feedback, suggestion, or complaint freely without fear..." required></textarea>
-                    </div>
-
-                    <button type="submit" id="vSubmit" class="lux-submit">
-                        <i class="fa-solid fa-paper-plane"></i> Send Anonymously
-                    </button>
-                    <div id="vToast" class="toast-ok"></div>
-                </form>
-            </div>
-        </section>
-
-        <!-- Subtle Footer -->
-        <footer class="footer-note">
-            <p>Have study materials to share? <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank">Send to Zevora Union →</a></p>
-        </footer>
-
+<nav class="navbar">
+  <div class="brand">
+    <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+    <div><h1>GITE Academic Hub</h1><span>Malappuram</span></div>
+  </div>
+  <a href="#open-voice" class="nav-voice"><i class="fa-solid fa-user-secret"></i> Open Voice</a>
+</nav>
+<header class="hero">
+  <div class="hero-tag">Zevora College Union 2026–27</div>
+  <h2>D.El.Ed Digital Study Hub</h2>
+  <p>Access organized semester notes, question papers, and share your voice anonymously.</p>
+</header>
+<main class="container">
+  <div class="control-box">
+    <div class="dept-tabs">
+      <button type="button" class="dept-btn active" id="d-general" onclick="setDept('general')">General</button>
+      <button type="button" class="dept-btn" id="d-urdu" onclick="setDept('urdu')">Urdu</button>
+      <button type="button" class="dept-btn" id="d-arabic" onclick="setDept('arabic')">Arabic</button>
     </div>
-
-    <script>
-        const OPEN_VOICE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyO_qDT2nnaBk3XmHZAm6auiM-uMjntiYpjuC_mqctPruxTUwcrvK3BTzBps_5KC_jONQ/exec";
-
-        const driveLinks = {
-            general: {
-                sem1_notes: "https://drive.google.com/drive/folders/190GGjhPnYxuYjtNr_3PHsUuodkRGAqZG",
-                sem1_qp: "https://drive.google.com/drive/folders/1gybTFPngLIUXI8eifeaCDcY8Vnfy0LGb",
-                sem2_notes: "https://drive.google.com/drive/folders/1Q2ccfr2xvxu36CSADSeZxjnnHHDWnSMy",
-                sem2_qp: "https://drive.google.com/drive/folders/1WiN7o7Q9P95Pbp4mZ9d7s-xB9hEqolEY",
-                sem3_notes: "https://drive.google.com/drive/folders/19PaHm1LK5PO8ED0XKuQiq6QxqOD50GsB",
-                sem3_qp: "https://drive.google.com/drive/folders/1yALJxxwFFc13VtJc1gGRzdVVl_TFdVTK",
-                sem4_notes: "https://drive.google.com/drive/folders/1gHztDKy4tSglG2QA4ozYChE5aGYUbtK9",
-                sem4_qp: "https://drive.google.com/drive/folders/1GBv8kOBZ7yrRaHzpi-tnTdkLdFKIEXGw",
-                teaching: "https://drive.google.com/drive/folders/1Rf9ri-MWHkCpvbeyF5mTYC_grHdqOZuC"
-            },
-            urdu: {
-                sem1_notes: "https://drive.google.com/drive/folders/13O9e3aeHfEQQeynpc-yspokO2evPGrFO",
-                sem1_qp: "https://drive.google.com/drive/folders/1R-cI9dxyq-rwodo3BXV2Jn_yc4He_GdC",
-                sem2_notes: "https://drive.google.com/drive/folders/1wuOm3jv8NL3uTQMnrClffJGuuIQr9_P4",
-                sem2_qp: "https://drive.google.com/drive/folders/1nO1qYfyokCMx_iPUCA44lSq3429JVzIO",
-                sem3_notes: "https://drive.google.com/drive/folders/1SiCdmKcdDqi1cbKBcoSrLi3DOzN7RO08",
-                sem3_qp: "https://drive.google.com/drive/folders/1ENJn9Eaj-5TxP8vnjQNS7Jzru2m8MSyR",
-                sem4_notes: "https://drive.google.com/drive/folders/1X17NFwnomoKEErrASPk-xSmvYkioMc8X",
-                sem4_qp: "https://drive.google.com/drive/folders/100AnhmyzpSmQcGwwgMG5PRLzzd5Puyyo",
-                teaching: "https://drive.google.com/drive/folders/1aFngBGMEtP8vQ5PChFjJmts9Q7n6hPb2"
-            },
-            arabic: {
-                sem1_notes: "https://drive.google.com/drive/folders/1OCXOrEc3gpjJ7yvFi9s4yOG8ydGV561u",
-                sem1_qp: "https://drive.google.com/drive/folders/1qO2XHfSLN5bwYFdz4IPqmjfgZfFtRRvz",
-                sem2_notes: "https://drive.google.com/drive/folders/1jL6pGnWPXxCnbsj5We3vYmIBUvHEyrNg",
-                sem2_qp: "https://drive.google.com/drive/folders/1HSNVuOYXgodSDl4OagKmhxKehfH1iF8J",
-                sem3_notes: "https://drive.google.com/drive/folders/1aDpsY-xkEuAI_uP2uBu6E3MAO4A_YpTk",
-                sem3_qp: "https://drive.google.com/drive/folders/17BGOIszF96_UWaX8E4FrnpIULwh_xmBs",
-                sem4_notes: "https://drive.google.com/drive/folders/1wZlz3Uu1cjgZl8ZgYZUGrBx-4b8ubJ9h",
-                sem4_qp: "https://drive.google.com/drive/folders/1Kas-FYL2yeKi5-MeRve2KPh0UymjYkZ3",
-                teaching: "https://drive.google.com/drive/folders/1sU8KFTViyNeUj_9W_qIGO4g-qBJlsL_Q"
-            }
-        };
-
-        let activeDept = 'general';
-        let activeType = 'notes';
-
-        function setView(view) {
-            document.getElementById('sectionStudy
+    <div class="filter-tabs">
+      <button type="button" class="tab-btn active" id="t-notes" onclick="setType('notes')">Study Notes</button>
+      <button type="button" class="tab-btn" id="t-qp" onclick="setType('qp')">Question Papers</button>
+      <button type="button" class="tab-btn" id="t-teaching" onclick="setType('teaching')">Teaching Manuals</button>
+    </div>
+  </div>
+  <div class="resource-grid" id="grid"></div>
+  <section class="voice-box" id="open-voice">
+    <div class="ov-head">
+      <h2><i class="fa-solid fa-shield-halved" style="color:#6366f1"></i> Open Voice</h2>
+      <span class="anon-badge">100% Anonymous</span>
+    </div>
+    <div class="ov-desc"><i class="fa-solid fa-lock"></i> പേരോ ഇമെയിലോ ശേഖരിക്കുന്നതല്ല. നിങ്ങളുടെ സന്ദേശം പൂർണ്ണമായും രഹസ്യമായി <strong>Zevora College Union</strong>-ലേക്ക് നേരിട്ട് ലഭിക്കുന്നതാണ്.</div>
+    <form onsubmit="sendMsg(event)">
+      <div class="fg">
+        <label>Category / വിഷയം</label>
+        <select id="cat" class="fc">
+          <option value="Academic & Classes">Academic & Classes</option>
+          <option value="Campus Facilities">Campus Facilities</option>
+          <option value="Union Programs & Suggestions">Union Programs & Suggestions</option>
+          <option value="General Grievance">General Grievance</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Anonymous Message / നിങ്ങളുടെ സന്ദേശം</label>
+        <textarea id="msg" class="fc" placeholder="Write your feedback or complaint freely..." required></textarea>
+      </div>
+      <button type="submit" id="sbtn" class="sub-btn"><i class="fa-solid fa-paper-plane"></i> Send Anonymously</button>
+      <div id="ok" class="alert-ok"></div>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>Have notes to share? <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank">Share via WhatsApp →</a></p>
+  <p style="margin-top:5px">Zevora College Union (2026–27) • GITE Down Hill, Malappuram</p>
+</footer>
+<script>
+const URL="https://script.google.com/macros/s/AKfycbyO_qDT2nnaBk3XmHZAm6auiM-uMjntiYpjuC_mqctPruxTUwcrvK3BTzBps_5KC_jONQ/exec";
+const L={
+general:{n1:"https://drive.google.com/drive/folders/190GGjhPnYxuYjtNr_3PHsUuodkRGAqZG",q1:"https://drive.google.com/drive/folders/1gybTFPngLIUXI8eifeaCDcY8Vnfy0LGb",n2:"https://drive.google.com/drive/folders/1Q2ccfr2xvxu36CSADSeZxjnnHHDWnSMy",q2:"https://drive.google.com/drive/folders/1WiN7o7Q9P95Pbp4mZ9d7s-xB9hEqolEY",n3:"https://drive.google.com/drive/folders/19PaHm1LK5PO8ED0XKuQiq6QxqOD50GsB",q3:"https://drive.google.com/drive/folders/1yALJxxwFFc13VtJc1gGRzdVVl_TFdVTK",n4:"https://drive.google.com/drive/folders/1gHztDKy4tSglG2QA4ozYChE5aGYUbtK9",q4:"https://drive.google.com/drive/folders/1GBv8kOBZ7yrRaHzpi-tnTdkLdFKIEXGw",tm:"https://drive.google.com/drive/folders/1Rf9ri-MWHkCpvbeyF5mTYC_grHdqOZuC"},
+urdu:{n1:"https://drive.google.com/drive/folders/13O9e3aeHfEQQeynpc-yspokO2evPGrFO",q1:"https://drive.google.com/drive/folders/1R-cI9dxyq-rwodo3BXV2Jn_yc4He_GdC",n2:"https://drive.google.com/drive/folders/1wuOm3jv8NL3uTQMnrClffJGuuIQr9_P4",q2:"https://drive.google.com/drive/folders/1nO1qYfyokCMx_iPUCA44lSq3429JVzIO",n3:"https://drive.google.com/drive/folders/1SiCdmKcdDqi1cbKBcoSrLi3DOzN7RO08",q3:"https://drive.google.com/drive/folders/1ENJn9Eaj-5TxP8vnjQNS7Jzru2m8MSyR",n4:"https://drive.google.com/drive/folders/1X17NFwnomoKEErrASPk-xSmvYkioMc8X",q4:"https://drive.google.com/drive/folders/100AnhmyzpSmQcGwwgMG5PRLzzd5Puyyo",tm:"https://drive.google.com/drive/folders/1aFngBGMEtP8vQ5PChFjJmts9Q7n6hPb2"},
+arabic:{n1:"https://drive.google.com/drive/folders/1OCXOrEc3gpjJ7yvFi9s4yOG8ydGV561u",q1:"https://drive.google.com/drive/folders/1qO2XHfSLN5bwYFdz4IPqmjfgZfFtRRvz",n2:"https://drive.google.com/drive/folders/1jL6pGnWPXxCnbsj5We3vYmIBUvHEyrNg",q2:"https://drive.google.com/drive/folders/1HSNVuOYXgodSDl4OagKmhxKehfH1iF8J",n3:"https://drive.google.com/drive/folders/1aDpsY-xkEuAI_uP2uBu6E3MAO4A_YpTk",q3:"https://drive.google.com/drive/folders/17BGOIszF96_UWaX8E4FrnpIULwh_xmBs",n4:"https://drive.google.com/drive/folders/1wZlz3Uu1cjgZl8ZgYZUGrBx-4b8ubJ9h",q4:"https://drive.google.com/drive/folders/1Kas-FYL2yeKi5-MeRve2KPh0UymjYkZ3",tm:"https://drive.google.com/drive/folders/1sU8KFTViyNeUj_9W_qIGO4g-qBJlsL_Q"}
+};
+let dept="general",type="notes";
+function setDept(d){dept=d;["general","urdu","arabic"].forEach(x=>document.getElementById("d-"+x).classList.toggle("active",x===d));draw()}
+function setType(t){type=t;["notes","qp","teaching"].forEach(x=>document.getElementById("t-"+x).classList.toggle("active",x===t));draw()}
+function draw(){
+const name=dept[0].toUpperCase()+dept.slice(1),lk=L[dept];
+let arr=type==="notes"?[{k:"n1",b:"SEMESTER 1",c:"",t:"Semester 1 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n2",b:"SEMESTER 2",c:"",t:"Semester 2 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n3",b:"SEMESTER 3",c:"",t:"Semester 3 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n4",b:"SEMESTER 4",c:"",t:"Semester 4 Study Notes",s:name+" stream lecture notes & PDFs"}]:type==="qp"?[{k:"q1",b:"SEM 1 QP",c:"purple",t:"Semester 1 Question Papers",s:name+" previous exam papers"},{k:"q2",b:"SEM 2 QP",c:"purple",t:"Semester 2 Question Papers",s:name+" previous exam papers"},{k:"q3",b:"SEM 3 QP",c:"purple",t:"Semester 3 Question Papers",s:name+" previous exam papers"},{k:"q4",b:"SEM 4 QP",c:"purple",t:"Semester 4 Question Papers",s:name+" previous exam papers"}]:[{k:"tm",b:"PRACTICUM",c:"green",t:"Teaching Manuals & TLM",s:name+" lesson plans & teaching aids"}];
+document.getElementById("grid").innerHTML=arr.map(i=>`<div class="res-card"><div><div class="card-top"><span class="sem-badge ${i.c}">${i.b}</span><i class="fa-brands fa-google-drive" style="color:#94a3b8"></i></div><h3>${i.t}</h3><p>${i.s}</p></div><a href="${lk[i.k]}" target="_blank" class="open-btn">Open Google Drive <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>`).join("");
+}
+function sendMsg(e){
+e.preventDefault();
+const b=document.getElementById("sbtn"),o=document.getElementById("ok");
+b.disabled=true;b.innerHTML="Sending Anonymously...";
+fetch(URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({category:document.getElementById("cat").value,message:document.getElementById("msg").value})}).finally(()=>{
+o.style.display="block";o.innerHTML="✅ നിങ്ങളുടെ സന്ദേശം 100% രഹസ്യമായി (Anonymously) യൂണിയന് അയച്ചു കഴിഞ്ഞു!";
+document.getElementById("msg").value="";b.disabled=false;b.innerHTML='<i class="fa-solid fa-paper-plane"></i> Send Anonymously';
+});
+}
+draw();
+</script>
+</body>
+</html>

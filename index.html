@@ -4,23 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GITE Hub">
 <title>GITE Academic Hub | Zevora Union 2026–27</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f172a'/%3E%3Cpath d='M50 24L14 41l36 17 30-14.2V64h6V41L50 24zm-22 28.5v13c0 7.5 9.8 13.5 22 13.5s22-6 22-13.5v-13L50 63 28 52.5z' fill='%2338bdf8'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f172a'/%3E%3Cpath d='M50 24L14 41l36 17 30-14.2V64h6V41L50 24zm-22 28.5v13c0 7.5 9.8 13.5 22 13.5s22-6 22-13.5v-13L50 63 28 52.5z' fill='%2338bdf8'/%3E%3C/svg%3E">
+<link rel="manifest" id="pwa-manifest">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--teal:#10b981;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--text);line-height:1.5}
-.navbar{background:#0f172a;color:#fff;padding:.9rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
+.navbar{background:#0f172a;color:#fff;padding:.85rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
 .brand{display:flex;align-items:center;gap:10px}
 .brand-icon{background:linear-gradient(135deg,#0ea5e9,#10b981);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
 .brand h1{font-size:1.05rem;font-weight:800}
 .brand span{font-size:.68rem;color:#94a3b8;display:block;text-transform:uppercase}
-.union-pill{background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.35);color:#38bdf8;padding:4px 11px;border-radius:50px;font-size:.7rem;font-weight:700}
+.nav-right{display:flex;align-items:center;gap:7px}
+.install-btn{background:linear-gradient(135deg,#0ea5e9,#10b981);color:#0f172a;border:none;padding:5px 11px;border-radius:50px;font-size:.7rem;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.union-pill{background:rgba(14,165,233,.15);border:1px solid rgba(14,165,233,.35);color:#38bdf8;padding:4px 10px;border-radius:50px;font-size:.68rem;font-weight:700}
 .hero{background:radial-gradient(circle at top right,#1e293b,#0f172a);color:#fff;padding:1.6rem 5% 3.6rem;text-align:center}
 .hero h2{font-size:1.55rem;font-weight:800;margin-bottom:.3rem}
 .hero p{color:#cbd5e1;font-size:.84rem;max-width:480px;margin:0 auto}
-.container{max-width:800px;margin:-2.3rem auto 3rem;padding:0 4%;position:relative;z-index:10}
+.container{max-width:800px;margin:-2.3rem auto 2.5rem;padding:0 4%;position:relative;z-index:10}
 
 /* General Notice Banner */
 .notice-card{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:1.5px solid #fcd34d;border-radius:16px;padding:.95rem 1.1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:11px;box-shadow:0 8px 20px rgba(245,158,11,.12)}
@@ -82,8 +90,22 @@ textarea.fc{min-height:120px;resize:vertical}
 .drive-frame{width:100%;height:460px;border:1px solid var(--border);border-radius:12px;background:#f8fafc}
 .ev-link{display:inline-flex;align-items:center;gap:6px;margin-top:.8rem;font-size:.8rem;font-weight:700;color:#059669;text-decoration:none}
 
+/* Quick Official Links & Share */
+.quick-links{background:#fff;border-radius:16px;padding:1rem 1.1rem;border:1px solid var(--border);margin-top:1.4rem;box-shadow:0 4px 12px rgba(15,23,42,.03)}
+.quick-links h4{font-size:.76rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.65rem}
+.ql-row{display:flex;flex-wrap:wrap;gap:8px}
+.ql-chip{background:#f8fafc;border:1px solid var(--border);color:var(--primary);text-decoration:none;padding:7px 12px;border-radius:10px;font-size:.76rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.ql-chip.wa{background:#ecfdf5;border-color:#a7f3d0;color:#059669}
+
+/* Install Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(15,23,42,.65);display:none;align-items:center;justify-content:center;z-index:200;padding:16px}
+.modal-card{background:#fff;border-radius:20px;padding:1.5rem;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+.modal-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}
+.modal-card p{font-size:.83rem;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+.modal-close{background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer}
+
 .hidden{display:none!important}
-footer{text-align:center;padding:1.8rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
+footer{text-align:center;padding:1.5rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
 footer a{color:#0284c7;font-weight:700;text-decoration:none}
 </style>
 </head>
@@ -93,7 +115,10 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
     <div><h1>GITE Academic Hub</h1><span>Malappuram</span></div>
   </div>
-  <span class="union-pill">Zevora 2026–27</span>
+  <div class="nav-right">
+    <button type="button" class="install-btn" id="installBtn" onclick="installApp()"><i class="fa-solid fa-download"></i> App</button>
+    <span class="union-pill">Zevora 2026–27</span>
+  </div>
 </nav>
 <header class="hero">
   <h2>D.El.Ed Student Portal</h2>
@@ -108,7 +133,6 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     </div>
   </div>
 
-  <!-- 3 Equal-Priority Cards -->
   <div class="main-switch">
     <div class="mode-card active-study" id="btnStudy" onclick="switchMode('study')">
       <i class="fa-solid fa-book-open-reader"></i>
@@ -127,7 +151,6 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     </div>
   </div>
 
-  <!-- STUDY HUB -->
   <div id="viewStudy">
     <div class="control-box">
       <div class="dept-tabs">
@@ -144,7 +167,6 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     <div class="resource-grid" id="grid"></div>
   </div>
 
-  <!-- OPEN VOICE -->
   <div id="viewVoice" class="hidden">
     <section class="voice-box">
       <div class="ov-head">
@@ -172,7 +194,6 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     </section>
   </div>
 
-  <!-- UNION EVENTS (DIRECT IN-SITE GALLERY) -->
   <div id="viewEvents" class="hidden">
     <section class="events-box">
       <div class="ev-head">
@@ -185,12 +206,36 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
       </div>
     </section>
   </div>
+
+  <div class="quick-links">
+    <h4>Official Links & Quick Share</h4>
+    <div class="ql-row">
+      <a href="https://pareekshabhavan.kerala.gov.in/" target="_blank" class="ql-chip"><i class="fa-solid fa-building-columns"></i> Pareekshabhavan</a>
+      <a href="https://scert.kerala.gov.in/" target="_blank" class="ql-chip"><i class="fa-solid fa-book"></i> SCERT Kerala</a>
+      <a href="https://wa.me/?text=Check%20out%20GITE%20Academic%20Hub%20(D.El.Ed%20Study%20Notes,%20Question%20Papers%20%26%20Open%20Voice):%20https://uniongitemalappuram-hub.github.io/gite-academic-hub/" target="_blank" class="ql-chip wa"><i class="fa-brands fa-whatsapp"></i> Share Portal</a>
+    </div>
+  </div>
 </main>
+
+<div class="modal-bg" id="installModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal-card">
+    <h3>📲 ഫോണിൽ App പോലെ സേവ് ചെയ്യാം</h3>
+    <p><strong>Android (Chrome):</strong> മുകളിലെ മൂന്ന് കുത്തുകളിൽ (⋮) തൊട്ട് <strong>"Add to Home screen"</strong> അല്ലെങ്കിൽ <strong>"Install app"</strong> അമർത്തുക.<br><br><strong>iPhone / iOS (Safari):</strong> താഴെയുള്ള <strong>Share</strong> ബട്ടൺ അമർത്തി <strong>"Add to Home Screen"</strong> തിരഞ്ഞെടുക്കുക.</p>
+    <button type="button" class="modal-close" onclick="document.getElementById('installModal').style.display='none'">ശരി, മനസ്സിലായി</button>
+  </div>
+</div>
+
 <footer>
   <p>Have notes to share? <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank">Share via WhatsApp →</a></p>
   <p style="margin-top:5px">Zevora College Union (2026–27) • GITE Down Hill, Malappuram</p>
 </footer>
 <script>
+const manifestData={name:"GITE Academic Hub",short_name:"GITE Hub",start_url:"https://uniongitemalappuram-hub.github.io/gite-academic-hub/",display:"standalone",background_color:"#0f172a",theme_color:"#0f172a",icons:[{src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%230f172a'/%3E%3Cpath d='M96 46L27 79l69 33 58-27.3V123h11V79L96 46zm-42 54.7v25c0 14.4 18.8 26 42 26s42-11.6 42-26v-25L96 121 54 100.7z' fill='%2338bdf8'/%3E%3C/svg%3E",sizes:"192x192",type:"image/svg+xml"}]};
+document.getElementById("pwa-manifest").setAttribute("href","data:application/manifest+json,"+encodeURIComponent(JSON.stringify(manifestData)));
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
+function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.finally(()=>{deferredPrompt=null})}else{document.getElementById("installModal").style.display="flex"}}
+
 const URL="https://script.google.com/macros/s/AKfycbyO_qDT2nnaBk3XmHZAm6auiM-uMjntiYpjuC_mqctPruxTUwcrvK3BTzBps_5KC_jONQ/exec";
 const L={
 general:{n1:"https://drive.google.com/drive/folders/190GGjhPnYxuYjtNr_3PHsUuodkRGAqZG",q1:"https://drive.google.com/drive/folders/1gybTFPngLIUXI8eifeaCDcY8Vnfy0LGb",n2:"https://drive.google.com/drive/folders/1Q2ccfr2xvxu36CSADSeZxjnnHHDWnSMy",q2:"https://drive.google.com/drive/folders/1WiN7o7Q9P95Pbp4mZ9d7s-xB9hEqolEY",n3:"https://drive.google.com/drive/folders/19PaHm1LK5PO8ED0XKuQiq6QxqOD50GsB",q3:"https://drive.google.com/drive/folders/1yALJxxwFFc13VtJc1gGRzdVVl_TFdVTK",n4:"https://drive.google.com/drive/folders/1gHztDKy4tSglG2QA4ozYChE5aGYUbtK9",q4:"https://drive.google.com/drive/folders/1GBv8kOBZ7yrRaHzpi-tnTdkLdFKIEXGw",tm:"https://drive.google.com/drive/folders/1Rf9ri-MWHkCpvbeyF5mTYC_grHdqOZuC"},
@@ -201,28 +246,4 @@ let dept="general",type="notes";
 function switchMode(m){
 document.getElementById("viewStudy").classList.toggle("hidden",m!=="study");
 document.getElementById("viewVoice").classList.toggle("hidden",m!=="voice");
-document.getElementById("viewEvents").classList.toggle("hidden",m!=="events");
-document.getElementById("btnStudy").className="mode-card"+(m==="study"?" active-study":"");
-document.getElementById("btnVoice").className="mode-card"+(m==="voice"?" active-voice":"");
-document.getElementById("btnEvents").className="mode-card"+(m==="events"?" active-events":"");
-}
-function setDept(d){dept=d;["general","urdu","arabic"].forEach(x=>document.getElementById("d-"+x).classList.toggle("active",x===d));draw()}
-function setType(t){type=t;["notes","qp","teaching"].forEach(x=>document.getElementById("t-"+x).classList.toggle("active",x===t));draw()}
-function draw(){
-const name=dept[0].toUpperCase()+dept.slice(1),lk=L[dept];
-let arr=type==="notes"?[{k:"n1",b:"SEMESTER 1",c:"",t:"Semester 1 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n2",b:"SEMESTER 2",c:"",t:"Semester 2 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n3",b:"SEMESTER 3",c:"",t:"Semester 3 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n4",b:"SEMESTER 4",c:"",t:"Semester 4 Study Notes",s:name+" stream lecture notes & PDFs"}]:type==="qp"?[{k:"q1",b:"SEM 1 QP",c:"purple",t:"Semester 1 Question Papers",s:name+" previous exam papers"},{k:"q2",b:"SEM 2 QP",c:"purple",t:"Semester 2 Question Papers",s:name+" previous exam papers"},{k:"q3",b:"SEM 3 QP",c:"purple",t:"Semester 3 Question Papers",s:name+" previous exam papers"},{k:"q4",b:"SEM 4 QP",c:"purple",t:"Semester 4 Question Papers",s:name+" previous exam papers"}]:[{k:"tm",b:"PRACTICUM",c:"green",t:"Teaching Manuals & TLM",s:name+" lesson plans & teaching aids"}];
-document.getElementById("grid").innerHTML=arr.map(i=>`<div class="res-card"><div><div class="card-top"><span class="sem-badge ${i.c}">${i.b}</span><i class="fa-brands fa-google-drive" style="color:#94a3b8"></i></div><h3>${i.t}</h3><p>${i.s}</p></div><a href="${lk[i.k]}" target="_blank" class="open-btn">Open Google Drive <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>`).join("");
-}
-function sendMsg(e){
-e.preventDefault();
-const b=document.getElementById("sbtn"),o=document.getElementById("ok");
-b.disabled=true;b.innerHTML="Sending Anonymously...";
-fetch(URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({category:document.getElementById("cat").value,message:document.getElementById("msg").value})}).finally(()=>{
-o.style.display="block";o.innerHTML="✅ നിങ്ങളുടെ സന്ദേശം 100% രഹസ്യമായി (Anonymously) യൂണിയന് അയച്ചു കഴിഞ്ഞു!";
-document.getElementById("msg").value="";b.disabled=false;b.innerHTML='<i class="fa-solid fa-paper-plane"></i> Send Anonymously';
-});
-}
-draw();
-</script>
-</body>
-</html>
+document.getElementById("viewEvents").classList.toggle

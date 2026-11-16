@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--amber:#f59e0b;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
+:root{--primary:#0f172a;--accent:#0ea5e9;--purple:#6366f1;--teal:#10b981;--bg:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--text);line-height:1.5}
 .navbar{background:#0f172a;color:#fff;padding:.9rem 5%;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -20,20 +20,28 @@ body{background:var(--bg);color:var(--text);line-height:1.5}
 .hero{background:radial-gradient(circle at top right,#1e293b,#0f172a);color:#fff;padding:1.6rem 5% 3.6rem;text-align:center}
 .hero h2{font-size:1.55rem;font-weight:800;margin-bottom:.3rem}
 .hero p{color:#cbd5e1;font-size:.84rem;max-width:480px;margin:0 auto}
-.container{max-width:780px;margin:-2.3rem auto 3rem;padding:0 4%;position:relative;z-index:10}
+.container{max-width:800px;margin:-2.3rem auto 3rem;padding:0 4%;position:relative;z-index:10}
+
+/* General Notice Banner */
 .notice-card{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:1.5px solid #fcd34d;border-radius:16px;padding:.95rem 1.1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:11px;box-shadow:0 8px 20px rgba(245,158,11,.12)}
 .notice-icon{background:#f59e0b;color:#fff;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;margin-top:2px}
 .notice-body h4{font-size:.78rem;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
 .notice-body p{font-size:.82rem;color:#78350f;font-weight:600}
-.main-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.2rem}
-.mode-card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:1rem .8rem;text-align:center;cursor:pointer;box-shadow:0 6px 18px rgba(15,23,42,.05);transition:all .2s}
-.mode-card i{font-size:1.25rem;margin-bottom:5px;display:block;color:var(--muted)}
-.mode-card h3{font-size:.92rem;font-weight:800;color:var(--text)}
-.mode-card span{font-size:.7rem;color:var(--muted);display:block;font-weight:600}
+
+/* 3 Equal-Priority Mode Cards */
+.main-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.2rem}
+.mode-card{background:#fff;border:2px solid var(--border);border-radius:15px;padding:.9rem .45rem;text-align:center;cursor:pointer;box-shadow:0 6px 18px rgba(15,23,42,.05);transition:all .2s}
+.mode-card i{font-size:1.15rem;margin-bottom:4px;display:block;color:var(--muted)}
+.mode-card h3{font-size:.83rem;font-weight:800;color:var(--text)}
+.mode-card span{font-size:.65rem;color:var(--muted);display:block;font-weight:600;margin-top:1px}
 .mode-card.active-study{border-color:var(--accent);background:#f0f9ff}
 .mode-card.active-study i,.mode-card.active-study h3{color:#0284c7}
 .mode-card.active-voice{border-color:var(--purple);background:#eef2ff}
 .mode-card.active-voice i,.mode-card.active-voice h3{color:#4f46e5}
+.mode-card.active-events{border-color:var(--teal);background:#ecfdf5}
+.mode-card.active-events i,.mode-card.active-events h3{color:#059669}
+
+/* Study Hub */
 .control-box{background:#fff;border-radius:18px;padding:1.05rem;box-shadow:0 8px 24px rgba(15,23,42,.05);border:1px solid var(--border);margin-bottom:1.2rem}
 .dept-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f1f5f9;padding:4px;border-radius:11px;margin-bottom:.8rem}
 .dept-btn{background:transparent;border:none;padding:8px 5px;border-radius:8px;font-weight:700;font-size:.85rem;color:var(--muted);cursor:pointer}
@@ -51,6 +59,8 @@ body{background:var(--bg);color:var(--text);line-height:1.5}
 .res-card p{font-size:.78rem;color:var(--muted);margin-bottom:1rem}
 .open-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:#f8fafc;color:var(--primary);text-decoration:none;padding:9px;border-radius:10px;font-size:.82rem;font-weight:700;border:1px solid var(--border)}
 .open-btn:active{background:var(--accent);color:#fff}
+
+/* Open Voice */
 .voice-box{background:#fff;border-radius:20px;padding:1.5rem;border:1px solid var(--border);box-shadow:0 10px 28px rgba(15,23,42,.06);border-top:4px solid var(--purple)}
 .ov-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:.7rem}
 .ov-head h2{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:8px}
@@ -63,6 +73,15 @@ body{background:var(--bg);color:var(--text);line-height:1.5}
 textarea.fc{min-height:120px;resize:vertical}
 .sub-btn{width:100%;background:linear-gradient(135deg,#0f172a,#4f46e5);color:#fff;border:none;padding:13px;border-radius:11px;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .alert-ok{display:none;margin-top:.9rem;padding:11px;border-radius:10px;background:#dcfce7;color:#15803d;font-size:.82rem;font-weight:700;text-align:center}
+
+/* Union Events Embedded Gallery */
+.events-box{background:#fff;border-radius:20px;padding:1.3rem;border:1px solid var(--border);box-shadow:0 10px 28px rgba(15,23,42,.06);border-top:4px solid var(--teal)}
+.ev-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:.8rem}
+.ev-head h2{font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.ev-pill{background:#dcfce7;color:#059669;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:50px}
+.drive-frame{width:100%;height:460px;border:1px solid var(--border);border-radius:12px;background:#f8fafc}
+.ev-link{display:inline-flex;align-items:center;gap:6px;margin-top:.8rem;font-size:.8rem;font-weight:700;color:#059669;text-decoration:none}
+
 .hidden{display:none!important}
 footer{text-align:center;padding:1.8rem 5% 2.2rem;color:var(--muted);font-size:.78rem}
 footer a{color:#0284c7;font-weight:700;text-decoration:none}
@@ -85,21 +104,30 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     <div class="notice-icon"><i class="fa-solid fa-bullhorn"></i></div>
     <div class="notice-body">
       <h4>General Notice • Zevora Union</h4>
-      <p>Welcome to GITE Academic Hub! All Semester Notes, Question Papers & 100% Anonymous Open Voice Portal are now live.</p>
+      <p>Welcome to GITE Academic Hub! All Semester Notes, Question Papers, Union Events & 100% Anonymous Open Voice Portal are now live.</p>
     </div>
   </div>
+
+  <!-- 3 Equal-Priority Cards -->
   <div class="main-switch">
     <div class="mode-card active-study" id="btnStudy" onclick="switchMode('study')">
       <i class="fa-solid fa-book-open-reader"></i>
       <h3>Study Hub</h3>
-      <span>Notes & Question Papers</span>
+      <span>Notes & Papers</span>
     </div>
     <div class="mode-card" id="btnVoice" onclick="switchMode('voice')">
       <i class="fa-solid fa-user-secret"></i>
       <h3>Open Voice</h3>
-      <span>100% Anonymous Box</span>
+      <span>100% Anonymous</span>
+    </div>
+    <div class="mode-card" id="btnEvents" onclick="switchMode('events')">
+      <i class="fa-solid fa-images"></i>
+      <h3>Union Events</h3>
+      <span>Updates & Gallery</span>
     </div>
   </div>
+
+  <!-- STUDY HUB -->
   <div id="viewStudy">
     <div class="control-box">
       <div class="dept-tabs">
@@ -115,6 +143,8 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
     </div>
     <div class="resource-grid" id="grid"></div>
   </div>
+
+  <!-- OPEN VOICE -->
   <div id="viewVoice" class="hidden">
     <section class="voice-box">
       <div class="ov-head">
@@ -141,6 +171,20 @@ footer a{color:#0284c7;font-weight:700;text-decoration:none}
       </form>
     </section>
   </div>
+
+  <!-- UNION EVENTS (DIRECT IN-SITE GALLERY) -->
+  <div id="viewEvents" class="hidden">
+    <section class="events-box">
+      <div class="ev-head">
+        <h2><i class="fa-solid fa-camera-retro" style="color:#10b981"></i> Zevora Union Events & Gallery</h2>
+        <span class="ev-pill">Live Updates</span>
+      </div>
+      <iframe class="drive-frame" src="https://drive.google.com/embeddedfolderview?id=1vp9XBM2sHqPTgpGIUo1nNA40Qh1jw2vl#grid" title="Zevora Union Events Gallery"></iframe>
+      <div style="text-align:right">
+        <a href="https://drive.google.com/drive/folders/1vp9XBM2sHqPTgpGIUo1nNA40Qh1jw2vl" target="_blank" class="ev-link">Open Full Folder <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </section>
+  </div>
 </main>
 <footer>
   <p>Have notes to share? <a href="https://wa.me/918848784236?text=Hi%20Chairman,%20I%20would%20like%20to%20share%20notes%20for%20GITE%20Academic%20Hub." target="_blank">Share via WhatsApp →</a></p>
@@ -157,8 +201,10 @@ let dept="general",type="notes";
 function switchMode(m){
 document.getElementById("viewStudy").classList.toggle("hidden",m!=="study");
 document.getElementById("viewVoice").classList.toggle("hidden",m!=="voice");
+document.getElementById("viewEvents").classList.toggle("hidden",m!=="events");
 document.getElementById("btnStudy").className="mode-card"+(m==="study"?" active-study":"");
 document.getElementById("btnVoice").className="mode-card"+(m==="voice"?" active-voice":"");
+document.getElementById("btnEvents").className="mode-card"+(m==="events"?" active-events":"");
 }
 function setDept(d){dept=d;["general","urdu","arabic"].forEach(x=>document.getElementById("d-"+x).classList.toggle("active",x===d));draw()}
 function setType(t){type=t;["notes","qp","teaching"].forEach(x=>document.getElementById("t-"+x).classList.toggle("active",x===t));draw()}

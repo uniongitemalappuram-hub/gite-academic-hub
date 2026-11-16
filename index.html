@@ -246,4 +246,32 @@ let dept="general",type="notes";
 function switchMode(m){
 document.getElementById("viewStudy").classList.toggle("hidden",m!=="study");
 document.getElementById("viewVoice").classList.toggle("hidden",m!=="voice");
-document.getElementById("viewEvents").classList.toggle
+function switchMode(m){
+document.getElementById("viewStudy").classList.toggle("hidden",m!=="study");
+document.getElementById("viewVoice").classList.toggle("hidden",m!=="voice");
+document.getElementById("viewEvents").classList.toggle("hidden",m!=="events");
+document.getElementById("btnStudy").className="mode-card"+(m==="study"?" active-study":"");
+document.getElementById("btnVoice").className="mode-card"+(m==="voice"?" active-voice":"");
+document.getElementById("btnEvents").className="mode-card"+(m==="events"?" active-events":"");
+}
+function setDept(d){dept=d;["general","urdu","arabic"].forEach(x=>document.getElementById("d-"+x).classList.toggle("active",x===d));draw()}
+function setType(t){type=t;["notes","qp","teaching"].forEach(x=>document.getElementById("t-"+x).classList.toggle("active",x===t));draw()}
+function draw(){
+const name=dept[0].toUpperCase()+dept.slice(1),lk=L[dept];
+let arr=type==="notes"?[{k:"n1",b:"SEMESTER 1",c:"",t:"Semester 1 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n2",b:"SEMESTER 2",c:"",t:"Semester 2 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n3",b:"SEMESTER 3",c:"",t:"Semester 3 Study Notes",s:name+" stream lecture notes & PDFs"},{k:"n4",b:"SEMESTER 4",c:"",t:"Semester 4 Study Notes",s:name+" stream lecture notes & PDFs"}]:type==="qp"?[{k:"q1",b:"SEM 1 QP",c:"purple",t:"Semester 1 Question Papers",s:name+" previous exam papers"},{k:"q2",b:"SEM 2 QP",c:"purple",t:"Semester 2 Question Papers",s:name+" previous exam papers"},{k:"q3",b:"SEM 3 QP",c:"purple",t:"Semester 3 Question Papers",s:name+" previous exam papers"},{k:"q4",b:"SEM 4 QP",c:"purple",t:"Semester 4 Question Papers",s:name+" previous exam papers"}]:[{k:"tm",b:"PRACTICUM",c:"green",t:"Teaching Manuals & TLM",s:name+" lesson plans & teaching aids"}];
+document.getElementById("grid").innerHTML=arr.map(i=>`<div class="res-card"><div><div class="card-top"><span class="sem-badge ${i.c}">${i.b}</span><i class="fa-brands fa-google-drive" style="color:#94a3b8"></i></div><h3>${i.t}</h3><p>${i.s}</p></div><a href="${lk[i.k]}" target="_blank" class="open-btn">Open Google Drive <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>`).join("");
+}
+function sendMsg(e){
+e.preventDefault();
+const b=document.getElementById("sbtn"),o=document.getElementById("ok");
+b.disabled=true;b.innerHTML="Sending Anonymously...";
+fetch(URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({category:document.getElementById("cat").value,message:document.getElementById("msg").value})}).finally(()=>{
+o.style.display="block";o.innerHTML="✅ നിങ്ങളുടെ സന്ദേശം 100% രഹസ്യമായി (Anonymously) യൂണിയന് അയച്ചു കഴിഞ്ഞു!";
+document.getElementById("msg").value="";b.disabled=false;b.innerHTML='<i class="fa-solid fa-paper-plane"></i> Send Anonymously';
+});
+}
+draw();
+</script>
+</body>
+</html>
+
